@@ -5,12 +5,14 @@ function onInit() {
 
 var counter = 0;
 
-var energy = 0;
-
 var lastpulse = Date.now();
 
 var pulsetime = 0;
 
+// energy variable will be actual kWh * 1000 in order for BTHome to parse to 3 decimal places
+var energy = 0;
+
+// power variable will be actual watts * 100 in order for BTHome to parse to 2 decimal places
 var power = 0;
 
 // change this to match your meter - e.g. 3200 imp / kWh
@@ -34,11 +36,11 @@ setInterval(function() {
 // Calculate live wattage
 function rate() {
   pulsetime = Date.now() - lastpulse;
-  power = (3600000000 / imp) / pulsetime;
-  power = Number(power.toFixed(2));
+  power = (360000000000 / imp) / pulsetime;
+  power = Number(power.toFixed(0));
   lastpulse = Date.now();
-  energy = counter * 0.0003125;
-  energy = Number(energy.toFixed(3));
+  energy = counter * 0.3125;
+  energy = Number(energy.toFixed(0));
 }
 
 // Set up pin states
