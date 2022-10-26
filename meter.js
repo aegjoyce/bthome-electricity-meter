@@ -39,7 +39,7 @@ function rate() {
   power = (360000000000 / imp) / pulsetime;
   power = Number(power.toFixed(0));
   lastpulse = Date.now();
-  energy = counter * 0.3125;
+  energy = counter * (1000 / imp);
   energy = Number(energy.toFixed(0));
 }
 
